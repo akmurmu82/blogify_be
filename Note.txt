@@ -1,0 +1,7 @@
+- Project Setup
+
+- Install the packages
+ - Express, Nodemon, mongoose, Mongodb
+ - setup the basic route
+ - setup a connection between database and server
+ - setup Express route
