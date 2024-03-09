@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const dotenv = require("dotenv").config();
 const connection = require("./db");
 const app = express();
@@ -9,7 +10,7 @@ const { blogRouter } = require("./route/BlogRoute");
 
 // Middleware to parse JSON requests
 app.use(express.json());
-
+app.use(cors());
 // Route handlers
 app.use("/blog", blogRouter);
 
