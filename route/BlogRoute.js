@@ -14,18 +14,20 @@ blogRouter.get("/", async (req, res) => {
 
 blogRouter.post("/createBlog", async (req, res) => {
   try {
-    const { title, author } = req.body; // Corrected from res.body to req.body
+    const { title, author, content, imgSrc } = req.body; // Corrected from res.body to req.body
     const blog = new BlogModel({
       title,
       author,
+      content,
+      imgSrc,
     });
 
-    await blog.save();
-    res.status(201).json({ message: "New blog has been created :)" });
+    const newBlog = await blog.save();
+    res.status(201).json({ message: "New blog has been created :)", data: newBlog });
   } catch (error) {
     res
-      .status(501)
-      .json({ message: "Error while saving the blog. check your fields" });
+      .status(200)
+      .json({ message: [] });
   }
 });
 
