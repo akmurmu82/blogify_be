@@ -1,11 +1,15 @@
 const express = require("express");
 const BlogModel = require("../model/blogModel");
 
-
 const blogRouter = express.Router();
 
-blogRouter.get("/data", (req, res) => {
-  res.send({ message: { data: "Amit" } });
+blogRouter.get("/", async (req, res) => {
+  try {
+    const blogData = await BlogModel.find();
+    res.status(200).json({ data: blogData });
+  } catch (error) {
+    res.status(404).json({ message: "No blogs found!" });
+  }
 });
 
 blogRouter.post("/createBlog", async (req, res) => {
