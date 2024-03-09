@@ -1,5 +1,7 @@
 const express = require("express");
 const BlogModel = require("../model/blogModel");
+
+
 const blogRouter = express.Router();
 
 blogRouter.get("/data", (req, res) => {

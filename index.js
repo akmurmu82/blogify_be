@@ -11,11 +11,11 @@ const { blogRouter } = require("./route/BlogRoute");
 app.use(express.json());
 
 // Route handlers
-app.use("/", (req, res) => {
-  res.send({ message: "Welcome to Homepage" });
-});
-
 app.use("/blog", blogRouter);
+
+app.get("/", (req, res) => {
+  res.send({ message: "Welcome to Homepages" });
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {
