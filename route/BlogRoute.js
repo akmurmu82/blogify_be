@@ -1,6 +1,7 @@
 const express = require("express");
 const BlogModel = require("../model/blogModel");
 const UserModel = require("../model/userModel");
+const bcrypt = require("bcrypt");
 
 const blogRouter = express.Router();
 // Guest register route
