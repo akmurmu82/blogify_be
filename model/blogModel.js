@@ -11,6 +11,6 @@ const blogSchema = mongoose.Schema({
   shares: { type: Number, default: 0 },
 });
 
-const BlogModel = mongoose.model("Blog", blogSchema);
+const BlogModel = mongoose.model("blog", blogSchema);
 
 module.exports = BlogModel;

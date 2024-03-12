@@ -6,13 +6,16 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Importing route handlers
-const { blogRouter } = require("./route/BlogRoute");
+const blogRouter = require("./route/BlogRoute");
+const userRouter = require("./route/userRoute");
 
 // Middleware to parse JSON requests
 app.use(express.json());
 app.use(cors());
 // Route handlers
+
 app.use("/blog", blogRouter);
+app.use("/bloguser", userRouter);
 
 app.get("/", (req, res) => {
   res.send({ message: "Welcome to Homepages" });
