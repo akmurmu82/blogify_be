@@ -3,7 +3,7 @@ const BlogModel = require("../model/blogModel");
 
 const blogRouter = express.Router();
 
-blogRouter.post("/", async (req, res) => {
+blogRouter.get("/", async (req, res) => {
   try {
     const { email } = req.body; // Corrected from res.body to req.body
     const blog = new BlogModel.findOne({ email });
