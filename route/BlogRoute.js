@@ -3,6 +3,17 @@ const BlogModel = require("../model/blogModel");
 
 const blogRouter = express.Router();
 
+blogRouter.post("/", async (req, res) => {
+  try {
+    const { email } = req.body; // Corrected from res.body to req.body
+    const blog = new BlogModel.findOne({ email });
+
+    res.status(201).json({ data: blog });
+  } catch (error) {
+    res.status(200).json({ message: "Blogs not found!" });
+  }
+});
+
 blogRouter.post("/createBlog", async (req, res) => {
   try {
     const { title, author, content, imgSrc } = req.body; // Corrected from res.body to req.body
