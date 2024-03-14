@@ -5,23 +5,20 @@ const blogRouter = express.Router();
 
 blogRouter.get("/", async (req, res) => {
   try {
-    const { email } = req.body; // Corrected from res.body to req.body
-    const blog = new BlogModel.findOne({ email });
-
-    res.status(201).json({ data: blog });
+    const blogs = await BlogModel.find();
+    console.log(blogs)
+    res.status(200).json({ data: blogs });
   } catch (error) {
-    res.status(200).json({ message: "Blogs not found!" });
+    res.status(200).json({ message: error });
   }
 });
 
 blogRouter.post("/createBlog", async (req, res) => {
   try {
-    const { title, author, content, imgSrc } = req.body; // Corrected from res.body to req.body
+    const { title, author } = req.body; // Corrected from res.body to req.body
     const blog = new BlogModel({
       title,
-      author,
-      content,
-      imgSrc,
+      author
     });
 
     const newBlog = await blog.save();

@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Importing route handlers
-const blogRouter = require("./route/BlogRoute");
+const blogRouter = require("./route/BlogRoute")
 const userRouter = require("./route/userRoute");
 
 // Middleware to parse JSON requests
