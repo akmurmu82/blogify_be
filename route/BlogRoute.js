@@ -6,8 +6,7 @@ const blogRouter = express.Router();
 blogRouter.get("/", async (req, res) => {
   try {
     const blogs = await BlogModel.find();
-    console.log(blogs)
-    res.status(200).json({ data: blogs });
+    res.status(200).json({ blogs });
   } catch (error) {
     res.status(200).json({ message: error });
   }
@@ -18,7 +17,7 @@ blogRouter.post("/createBlog", async (req, res) => {
     const { title, author } = req.body; // Corrected from res.body to req.body
     const blog = new BlogModel({
       title,
-      author
+      author,
     });
 
     const newBlog = await blog.save();
